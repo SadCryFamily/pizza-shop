@@ -3,6 +3,7 @@ package com.app.pizzashop.dao;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,7 +16,7 @@ import java.util.Date;
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
     private Long id;
 
@@ -28,6 +29,9 @@ public class Customer {
     @Column(name = "phone")
     private String phone;
 
-    @Column(name = "reg_date")
-    private Date regDate;
+    @Column(name = "reg_date", nullable = false, updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
+    private Date regDate = new Date();
+
 }
