@@ -1,7 +1,9 @@
 package com.app.pizzashop.service;
 
 import com.app.pizzashop.dao.Customer;
+import com.app.pizzashop.dto.CustomerDto;
 import com.app.pizzashop.dto.FullCustomerInfoDto;
+import com.app.pizzashop.mapper.CustomerMapper;
 import com.app.pizzashop.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,14 +16,18 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
+    @Autowired
+    private CustomerMapper customerMapper;
+
     @Override
-    public Customer addNewCustomer(Customer customer) {
-        return Optional.of(customerRepository.saveAndFlush(customer)).orElseThrow();
+    public CustomerDto addNewCustomer(Customer customer) {
+        return Optional.of(customerRepository.saveAndFlush(customer))
+                .map(dao -> customerMapper.toBasicDto(dao)).orElseThrow();
     }
 
     @Override
     public FullCustomerInfoDto getCustomerProfileInfo(Long id) {
         return customerRepository.findById(id)
-                .map(customer -> new FullCustomerInfoDto(customer)).orElseThrow();
+                .map(customer -> customerMapper.toFullDto(customer)).orElseThrow();
     }
 }

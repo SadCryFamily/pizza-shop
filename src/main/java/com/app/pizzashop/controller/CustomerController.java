@@ -1,6 +1,7 @@
 package com.app.pizzashop.controller;
 
 import com.app.pizzashop.dao.Customer;
+import com.app.pizzashop.dto.CustomerDto;
 import com.app.pizzashop.dto.FullCustomerInfoDto;
 import com.app.pizzashop.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ public class CustomerController {
     private CustomerService customerService;
 
     @PostMapping("/signup")
-    public Customer addNewCustomer(@RequestBody Customer customer) {
+    public CustomerDto addNewCustomer(@RequestBody Customer customer) {
         return customerService.addNewCustomer(customer);
     }
 

@@ -24,11 +24,4 @@ public class FullCustomerInfoDto {
 
     private Date regDate;
 
-    public FullCustomerInfoDto(Customer customer) {
-        this.id = customer.getId();
-        this.firstName = customer.getFirstName();
-        this.lastName = customer.getLastName();
-        this.phone = customer.getPhone();
-        this.regDate = customer.getRegDate();
-    }
 }
