@@ -1,7 +1,6 @@
 package com.app.pizzashop.controller;
 
 import com.app.pizzashop.dao.Order;
-import com.app.pizzashop.repository.OrderRepository;
 import com.app.pizzashop.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +14,6 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @Autowired
-    private OrderRepository orderRepository;
-
     @PostMapping("/shop/{id}")
     public ResponseEntity createAnOrder(@PathVariable("id") Long id, @RequestBody String phoneNumber) {
         return orderService.createAnOrder(id, phoneNumber);
@@ -25,7 +21,12 @@ public class OrderController {
 
     @GetMapping("/profile/{id}/cart")
     public List<Order> getAllCustomerOrders(@PathVariable("id") Long id) {
-        return orderRepository.getCustomerCart(id);
+        return orderService.getAllCustomerOrders(id);
+    }
+
+    @DeleteMapping("/profile/{id}/cart")
+    public ResponseEntity deleteAnOrder(@PathVariable("id") Long id, @RequestParam Long productId) {
+        return orderService.deleteAnOrder(id, productId);
     }
 
 }

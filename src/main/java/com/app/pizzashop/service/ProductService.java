@@ -16,4 +16,6 @@ public interface ProductService {
 
     CurrentProductDto getPizzaById(Long id);
 
+    ResponseEntity<Product> deletePizzaById(Long id);
+
 }

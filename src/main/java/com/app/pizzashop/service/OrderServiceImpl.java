@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -34,12 +35,29 @@ public class OrderServiceImpl implements OrderService {
         var product = productRepository.getProductById(id);
 
         Order order = Order.builder()
-                .customerId(customer)
-                .productId(product).build();
+                .customer(customer)
+                .product(product).build();
 
         orderRepository.save(order);
 
         return new ResponseEntity<>(HttpStatus.OK);
+
+    }
+
+    @Override
+    @Transactional
+    public ResponseEntity deleteAnOrder(Long id, Long productId) {
+
+        orderRepository.deleteOrderByCustomerIdAndProductId(id, productId);
+
+        return new ResponseEntity(HttpStatus.OK);
+
+    }
+
+    @Override
+    public List<Order> getAllCustomerOrders(Long id) {
+
+        return orderRepository.getCustomerCart(id);
 
     }
 

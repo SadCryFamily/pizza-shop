@@ -32,4 +32,9 @@ public class ProductController {
         return productService.getPizzaById(id);
     }
 
+    @DeleteMapping("/shop/{id}")
+    public ResponseEntity<Product> deletePizzaById(@PathVariable("id") Long id) {
+        return productService.deletePizzaById(id);
+    }
+
 }

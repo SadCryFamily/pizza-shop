@@ -11,10 +11,10 @@
                 <constraints primaryKeyName="pk_order_id" primaryKey="true"/>
             </column>
             <column name="customer_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="fk_customer_id" references="customer(customer_id)"/>
+                <constraints nullable="false" foreignKeyName="fk_customer_id" references="customer(customer_id)" deleteCascade="false"/>
             </column>
             <column name="product_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="fk_product_id" references="product(product_id)"/>
+                <constraints nullable="false" foreignKeyName="fk_product_id" references="product(product_id)"  deleteCascade="true"/>
             </column>
         </createTable>
     </changeSet>
