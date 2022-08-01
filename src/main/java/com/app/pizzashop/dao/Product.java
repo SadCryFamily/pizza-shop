@@ -1,20 +1,20 @@
 package com.app.pizzashop.dao;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "product")
 public class Product {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
     private Long id;
 
@@ -25,6 +25,6 @@ public class Product {
     private String productDescription;
 
     @Column(name = "product_price", nullable = false)
-    private String productPrice;
+    private Integer productPrice;
 
 }
