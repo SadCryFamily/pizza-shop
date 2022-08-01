@@ -6,7 +6,7 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.10.xsd">
 
     <changeSet id="3" author="fogger">
-        <createTable tableName="order">
+        <createTable tableName="orders">
             <column name="order_id" type="bigserial">
                 <constraints primaryKeyName="pk_order_id" primaryKey="true"/>
             </column>

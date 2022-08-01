@@ -1,16 +1,17 @@
 package com.app.pizzashop.dao;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "order")
+@Builder
+@Table(name = "orders")
 public class Order {
 
     @Id
@@ -22,7 +23,7 @@ public class Order {
     @JoinColumn(name = "customer_id")
     private Customer customerId;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "product_id")
     private Product productId;
 
