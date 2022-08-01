@@ -1,6 +1,7 @@
 package com.app.pizzashop.service;
 
 import com.app.pizzashop.dao.Product;
+import com.app.pizzashop.dto.CurrentProductDto;
 import com.app.pizzashop.dto.FillProductDto;
 import com.app.pizzashop.dto.MenuProductDto;
 import com.app.pizzashop.mapper.ProductMapper;
@@ -39,6 +40,15 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll().stream()
                 .map(product -> productMapper.toMenuDto(product))
                 .collect(Collectors.toList());
+
+    }
+
+    @Override
+    public CurrentProductDto getPizzaById(Long id) {
+
+        var r = productRepository.getProductById(id);
+
+        return productMapper.toCurrentDto(r);
 
     }
 }

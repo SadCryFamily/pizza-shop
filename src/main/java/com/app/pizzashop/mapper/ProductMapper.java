@@ -1,6 +1,7 @@
 package com.app.pizzashop.mapper;
 
 import com.app.pizzashop.dao.Product;
+import com.app.pizzashop.dto.CurrentProductDto;
 import com.app.pizzashop.dto.FillProductDto;
 import com.app.pizzashop.dto.MenuProductDto;
 import org.mapstruct.Mapper;
@@ -17,5 +18,7 @@ public interface ProductMapper {
     MenuProductDto toMenuDto(Product product);
 
     FillProductDto toFillDto(Product product);
+
+    CurrentProductDto toCurrentDto(Product product);
 
 }
