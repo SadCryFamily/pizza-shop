@@ -21,5 +21,4 @@ public class FullCustomerInfoDto {
 
     private Date regDate;
 
-
 }

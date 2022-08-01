@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.10.xsd">
+
+    <changeSet id="2" author="fogger">
+        <createTable tableName="product">
+            <column name="product_id" type="bigserial">
+                <constraints primaryKey="true" primaryKeyName="pk_product_id"/>
+            </column>
+            <column name="product_name" type="text">
+                <constraints uniqueConstraintName="un_product_name" unique="true" nullable="false"/>
+            </column>
+            <column name="product_description" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_price" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="fogger">
+        <insert tableName="product">
+            <column name="product_name" value="Капричеза"/>
+            <column name="product_description" value="Состав: моцарелла, бекон, салями, шампиньоны, корнишоны, оливки, томатный соус, петрушка."/>
+            <column name="product_price" value="245"/>
+        </insert>
+        <insert tableName="product">
+            <column name="product_name" value="4 Сыра"/>
+            <column name="product_description" value="Состав: моцарелла, сыр Дорблю, пармезан, твердый сыр, соус бешамель, орегано."/>
+            <column name="product_price" value="169"/>
+        </insert>
+        <insert tableName="product">
+            <column name="product_name" value="Пеперони"/>
+            <column name="product_description" value="Состав: моцарелла, шампиньоны, салями, соус песто, томатный соус, орегано."/>
+            <column name="product_price" value="235"/>
+        </insert>
+        <insert tableName="product">
+            <column name="product_name" value="Европейская"/>
+            <column name="product_description" value="Состав: моцарелла, филе куриное, охотничьи колбаски, шампиньоны, петрушка, ветчина, томатный соус, орегано."/>
+            <column name="product_price" value="239"/>
+        </insert>
+        <insert tableName="product">
+            <column name="product_name" value="Вегетарианская"/>
+            <column name="product_description" value="Состав: Фета, моцарелла, брокколи, маслины, оливки, перец болгарский, помидоры, лук марс, орегано, томатный соус."/>
+            <column name="product_price" value="229"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

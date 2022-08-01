@@ -8,11 +8,11 @@
         <version>2.5.10</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.add.pizzashop  </groupId>
-    <artifactId>mm</artifactId>
+    <groupId>com.app</groupId>
+    <artifactId>pizzaShop</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>pizzaShop</name>
-    <description>Demo project for Spring Boot</description>
+    <description>pizzaShop</description>
 
     <properties>
         <java.version>11</java.version>

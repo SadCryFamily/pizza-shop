@@ -1,6 +1,7 @@
 package com.app.pizzashop.service;
 
 import com.app.pizzashop.dao.Customer;
+import com.app.pizzashop.dto.CustomerDto;
 import com.app.pizzashop.dto.FullCustomerInfoDto;
 import com.app.pizzashop.mapper.CustomerMapper;
 import com.app.pizzashop.repository.CustomerRepository;
@@ -19,8 +20,9 @@ public class CustomerServiceImpl implements CustomerService {
     private CustomerMapper customerMapper;
 
     @Override
-    public Customer addNewCustomer(Customer customer) {
-        return Optional.of(customerRepository.saveAndFlush(customer)).orElseThrow();
+    public CustomerDto addNewCustomer(Customer customer) {
+        return Optional.of(customerRepository.saveAndFlush(customer))
+                .map(dao -> customerMapper.toBasicDto(dao)).orElseThrow();
     }
 
     @Override

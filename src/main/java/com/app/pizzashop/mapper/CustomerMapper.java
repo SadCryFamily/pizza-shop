@@ -5,6 +5,7 @@ import com.app.pizzashop.dto.CustomerDto;
 import com.app.pizzashop.dto.FullCustomerInfoDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+
 import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
@@ -12,12 +13,14 @@ public interface CustomerMapper {
 
     CustomerMapper INSTANCE = Mappers.getMapper(CustomerMapper.class);
 
+
     CustomerDto toDto(Customer customer);
 
     @Mapping(source = "id", target = "id")
     FullCustomerInfoDto toFullDto(Customer customer);
 
-    @Mapping(source = "id", target = "id")
+    CustomerDto toBasicDto(Customer customer);
+
     Customer toEntity(FullCustomerInfoDto fullCustomerInfoDto);
 
 }
