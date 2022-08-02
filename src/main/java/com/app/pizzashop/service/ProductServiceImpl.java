@@ -55,9 +55,9 @@ public class ProductServiceImpl implements ProductService {
 
         log.info("Get pizza by ID: {}", id);
 
-        var r = productRepository.getProductById(id);
+        Product product = productRepository.getProductById(id);
 
-        return productMapper.toCurrentDto(r);
+        return productMapper.toCurrentDto(product);
 
     }
 
