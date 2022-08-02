@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
-    @Query(value = "SELECT o.order_id, o.customer_id, p.product_id, p.product_name, p.product_price FROM orders AS o INNER JOIN product AS p ON p.product_id = o.order_id WHERE o.customer_id IN (:id);", nativeQuery = true)
+    @Query(value = "SELECT o.order_id, c.customer_id, p.product_id, p.product_name, p.product_price FROM orders AS o INNER JOIN customer AS c ON o.customer_id = c.customer_id LEFT JOIN product AS p ON p.product_id = o.product_id WHERE c.customer_id IN (:id) ORDER BY o.order_id ASC;\n", nativeQuery = true)
     List<Order> getCustomerCart(@Param("id") Long id);
 
     @Modifying
