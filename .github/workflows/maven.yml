@@ -1,18 +1,12 @@
-# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
 name: Java CI with Maven
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - master
   pull_request:
-    branches: [ "master" ]
+    branches:
+      - master
 
 jobs:
   build:
@@ -26,11 +20,10 @@ jobs:
           POSTGRES_PASSWORD: 0542
         ports:
           - 5432:5432
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
@@ -42,4 +35,3 @@ jobs:
 
       - name: Run tests
         run: mvn test
-
